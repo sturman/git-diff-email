@@ -31,3 +31,9 @@ jobs:
       run: |
         echo Add other actions to build,
         echo test, and deploy your project.
+        echo "------"
+        echo $GITHUB_EVENT_NAME
+        echo "------"
+        echo $GITHUB_EVENT_PATH
+        echo "------"
+        cat $GITHUB_EVENT_PATH
