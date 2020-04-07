@@ -22,7 +22,7 @@ jobs:
     - name: Run a multi-line script
       run: |
         git diff ${{ github.event.before }} ${{ github.sha }} > git.diff
-        git diff ${{ github.event.before }} ${{ github.sha }} | bash ./diff2html.sh > email-body.html
+        git diff ${{ github.event.before }} ${{ github.sha }} | bash ./.github/diff2html.sh > email-body.html
         zip -r diff.zip git.diff email-body.html
     - name: Send mail
       uses: dawidd6/action-send-mail@master
