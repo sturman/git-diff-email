@@ -4,3 +4,4 @@
 - Convert raw git diff in colored HTML
 - Send HTML in email to the user
 - attach diff.zip in mail message 
+
