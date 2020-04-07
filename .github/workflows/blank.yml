@@ -25,7 +25,7 @@ jobs:
         git diff ${{ github.event.before }} ${{ github.sha }} | bash ./.github/diff2html.sh > email-body.html
         zip -r diff.zip git.diff email-body.html
     - name: Send mail
-      uses: dawidd6/action-send-mail@master
+      uses: dawidd6/action-send-mail@v2
       with:
         server_address: email-smtp.us-east-1.amazonaws.com
         server_port: 465
