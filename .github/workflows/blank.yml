@@ -21,5 +21,21 @@ jobs:
     # Runs a set of commands using the runners shell
     - name: Run a multi-line script
       run: |
+        git diff ${{ github.event.before }} ${{ github.sha }} > git.diff
         git diff ${{ github.event.before }} ${{ github.sha }} | bash ./diff2html.sh > email-body.html
-        cat ./email-body.html
+        zip -r diff.zip git.diff email-body.html
+    - name: Send mail
+      uses: dawidd6/action-send-mail@master
+      with:
+        server_address: email-smtp.us-east-1.amazonaws.com
+        server_port: 465
+        username: ${{secrets.MAIL_USERNAME}}
+        password: ${{secrets.MAIL_PASSWORD}}
+        subject: Github Actions job result
+        # Read file contents as body:
+        body: file://email-body.html
+        to: pewogab762@wwrmails.com
+        from: Luke Skywalker <pewogab762@wwrmails.com>
+        # Optional content type (defaults to text/plain):
+        content_type: text/html
+        attachments: diff.zip

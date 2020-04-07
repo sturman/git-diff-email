@@ -2,4 +2,5 @@
 
 - Run git diff on each branch push
 - Convert raw git diff in colored HTML
-- (TBD) Send HTML in email to the user
+- Send HTML in email to the user
+- attach diff.zip in mail message 
